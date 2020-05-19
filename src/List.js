@@ -7,9 +7,11 @@ const List = ({ toDos }) => {
   return (
     <Ul>
       {
-        toDos.map((toDo, index) => {
+        toDos.map((toDo) => {
           return (
-            <Item key={index} content={toDo.content} />
+            <>
+              <Item content={toDo.content} />
+            </>
           )
         })
       }
