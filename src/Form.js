@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
 
-const Form = ({ toDos, setToDos }) => {
+const Form = ({ toDos, setToDos, addToDo }) => {
   const [value, setValue] = useState('')
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (value === "" || value === undefined) {
-      return alert('文字を入力して下さい。')
-    } else {
-      setToDos([
-        ...toDos,
-        {
-          content: value
-        }
-      ])
-      // setValue(clearForm)
-    }
+    addToDo(value)
+    // if (value === "" || value === undefined) {
+    //   return alert('文字を入力して下さい。')
+    // } else {
+    //   setToDos([
+    //     ...toDos,
+    //     {
+    //       content: value
+    //     }
+    //   ])
+    //   // setValue(clearForm)
+    // }
   }
 
   // function clearForm() {
