@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Form from './Form';
 import List from './List';
 
 const App = () => {
-  const toDos = [
+  const [toDos, setToDos] = useState([
     {
       content: '課題をする'
     },
@@ -12,17 +12,14 @@ const App = () => {
     },
     {
       content: '電話をする'
-    },
-    {
-      content: ''
     }
-  ]
+  ])
 
   return (
     <>
       <h1>ToDo App</h1>
-      <Form />
-      <List toDos={toDos}/>
+      <Form toDos={toDos} setToDos={setToDos} />
+      <List toDos={toDos} />
     </>
   )
 }
