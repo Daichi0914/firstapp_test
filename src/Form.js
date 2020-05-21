@@ -1,27 +1,21 @@
 import React, { useState } from 'react';
 
-const Form = ({ toDos, setToDos, addToDo }) => {
+const Form = ({ addToDo }) => {
   const [value, setValue] = useState('')
 
   const handleSubmit = e => {
     e.preventDefault();
+    if (value === "" || value === undefined) {
+      return alert('文字を入力して下さい。')
+    }
     addToDo(value)
-    // if (value === "" || value === undefined) {
-    //   return alert('文字を入力して下さい。')
-    // } else {
-    //   setToDos([
-    //     ...toDos,
-    //     {
-    //       content: value
-    //     }
-    //   ])
-    //   // setValue(clearForm)
-    // }
-  }
 
-  // function clearForm() {
-  //   document.getElementById('clear').reset();
-  // }
+    // フォームを空にする
+
+    // state(今回はvalue)を空にする
+    setValue('')
+    // stateの変更がフォームに反映されるようにする
+  }
 
   return (
     <form id='clear' onSubmit={handleSubmit}>
@@ -31,6 +25,7 @@ const Form = ({ toDos, setToDos, addToDo }) => {
         onChange={e => {
           setValue(e.target.value)
         }}
+        value={value}
       />
       <button type='submit'>送信</button>
     </form>
