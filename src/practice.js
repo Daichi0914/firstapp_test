@@ -18,6 +18,7 @@ const sums = items.map((item) => {
 
 
 
+
 const scores = [13, 67, 18, 54, 30, 22, 89, 49, 21, 65, 7, 98, 100]
 
 function scoring(score) {
