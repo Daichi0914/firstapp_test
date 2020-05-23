@@ -18,19 +18,19 @@ const sums = items.map((item) => {
 
 
 
-const scores = [13, 67, 18, 54, 30, 22, 89, 49, 21, 65, 7, 98, 100]
+// const scores = [13, 67, 18, 54, 30, 22, 89, 49, 21, 65, 7, 98, 100]
 
-function scoring(score) {
-  if (score > 60) {
-    console.log('秀')
-  } else if (score > 13) {
-    console.log('良')
-  } else {
-    console.log('不可')
-  }
-}
+// function scoring(score) {
+//   if (score > 60) {
+//     console.log('秀')
+//   } else if (score > 13) {
+//     console.log('良')
+//   } else {
+//     console.log('不可')
+//   }
+// }
 
 // const arr = scores.map(scoring)
-for (let i = 0; i < scores.length; i++) {
-  scoring(scores[i]);
-}
+// for (let i = 0; i < scores.length; i++) {
+//   scoring(scores[i]);
+// }
