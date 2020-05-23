@@ -31,7 +31,7 @@ function scoring(score) {
   }
 }
 
-const arr = scores.map(scoring)
-// for (let i = 0; i < scores.length; i++) {
-//   scoring(scores[i]);
-// }
+// const arr = scores.map(scoring)
+for (let i = 0; i < scores.length; i++) {
+  scoring(scores[i]);
+}
