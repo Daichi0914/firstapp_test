@@ -27,7 +27,7 @@ const Form = ({ addToDo }) => {
         }}
         value={value}
       />
-      <button type='submit'>送信</button>
+      <button>送信</button>
     </form>
   )
 }
