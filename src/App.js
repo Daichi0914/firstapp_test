@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import nanoid from 'nanoid';
+import { nanoid } from 'nanoid';
 import Form from './Form';
 import List from './List';
 
