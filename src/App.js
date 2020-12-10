@@ -1,61 +1,62 @@
 import React, { useState } from 'react';
-import shortid from 'shortid';
+import nanoid from 'nanoid';
 import Form from './Form';
 import List from './List';
 
-
 const App = () => {
-  const [toDos, setToDos] = useState([
-    {
-      content: '課題をする',
-      id: shortid.generate()
-    },
-    {
-      content: '洗濯をする',
-      id: shortid.generate()
-    },
-    {
-      content: '電話をする',
-      id: shortid.generate()
-    }
-  ])
+  const [isDone, setIsDone] = useState(false);
+  const [toDos, setToDos] = useState({
+    TODO_LIST: [
+      {
+        content: '掃除をする',
+        id: nanoid(),
+        isDone: isDone,
+      },
+      {
+        content: '洗濯をする',
+        id: nanoid(),
+        isDone: isDone,
+      },
+      {
+        content: '料理をする',
+        id: nanoid(),
+        isDone: isDone,
+      },
+    ],
+  });
 
   const addToDo = content => {
-    setToDos([
-      ...toDos,
-      {
-        content: content,
-        id: shortid.generate()
-      }
-    ])
-  }
+    setToDos({
+      TODO_LIST: [
+        ...toDos.TODO_LIST,
+        {
+          content: content,
+          id: nanoid(),
+          isDone: isDone,
+        },
+      ],
+    });
+  };
+
+  const handleCheck = index => {
+    const { TODO_LIST } = toDos;
+    setIsDone((TODO_LIST[index].isDone = !toDos.TODO_LIST[index].isDone));
+    setToDos({ TODO_LIST });
+  };
 
   const deleteToDo = id => {
-    // const copyToDos = toDos.slice(0, toDos.length); // 0から最後まで
-    const copyToDos = toDos.slice(); // 配列全部をコピーするときは引数省略可
-    alert(id + ' is deleted!!');
-
-    // toDos(配列)からidプロパティが合致する要素(オブジェクト)を検索
-    const deleteIndex = copyToDos.findIndex((toDo) => {
-      return toDo.id === id // Boolean値が返る
-    })
-
-    copyToDos.splice(deleteIndex, 1)
-    setToDos(copyToDos)
-    /*
-    setToDos(copyToDos.splice(deleteIndex, 1))
-    ↑切り取ったやつを表示してしまう
-    */
-  }
+    setToDos({
+      TODO_LIST: toDos.TODO_LIST.filter(toDo => toDo.id !== id), // filterは配列を返すので[]はいらない
+    });
+  };
 
   return (
     <>
       <h1>ToDo App</h1>
       <Form addToDo={addToDo} />
-      <List toDos={toDos} deleteToDo={deleteToDo} />
+      <List toDos={toDos.TODO_LIST} deleteToDo={deleteToDo} handleCheck={handleCheck} />
     </>
-  )
-}
+  );
+};
 
-
-export default App
+export default App;
