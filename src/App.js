@@ -38,15 +38,16 @@ const App = () => {
     });
   };
 
-  const handleCheck = index => {
-    const { TODO_LIST } = toDos;
+  const toggleCheck = index => {
+    const { TODO_LIST } = toDos; // 分割代入 Destructuring assignment
     setIsDone((TODO_LIST[index].isDone = !toDos.TODO_LIST[index].isDone));
     setToDos({ TODO_LIST });
   };
 
   const deleteToDo = id => {
     setToDos({
-      TODO_LIST: toDos.TODO_LIST.filter(toDo => toDo.id !== id), // filterは配列を返すので[]はいらない
+      // filterは配列を返すので TODO_List: [...] と書かない
+      TODO_LIST: toDos.TODO_LIST.filter(toDo => toDo.id !== id),
     });
   };
 
@@ -54,7 +55,7 @@ const App = () => {
     <>
       <h1>ToDo App</h1>
       <Form addToDo={addToDo} />
-      <List toDos={toDos.TODO_LIST} deleteToDo={deleteToDo} handleCheck={handleCheck} />
+      <List toDos={toDos.TODO_LIST} deleteToDo={deleteToDo} toggleCheck={toggleCheck} />
     </>
   );
 };
